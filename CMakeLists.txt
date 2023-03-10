@@ -9,3 +9,13 @@ FetchContent_Declare(
     GIT_REPOSITORY https://github.com/doctest/doctest.git
 )
 FetchContent_MakeAvailable(doctest)
+
+add_executable(cublas-test
+    test/cublas-test.cu
+)
+
+target_link_libraries(cublas-test
+PRIVATE
+    cublas
+    doctest
+)
