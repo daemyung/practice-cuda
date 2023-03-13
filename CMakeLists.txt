@@ -10,12 +10,22 @@ FetchContent_Declare(
 )
 FetchContent_MakeAvailable(doctest)
 
+add_library(test-kit
+    test/test-kit.cuh
+    test/test-kit.cu
+)
+
+target_link_libraries(test-kit
+PUBLIC
+    cublas
+)
+
 add_executable(cublas-test
     test/cublas-test.cu
 )
 
 target_link_libraries(cublas-test
 PRIVATE
-    cublas
     doctest
+    test-kit
 )
